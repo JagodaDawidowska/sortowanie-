@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface EquipmentRepository extends CrudRepository<Equipment, Long>{
-	
-	//zeby uzywac UPDATE / DELETE musza byc adnotacje transactional i modyfiing
+
+	//zeby uzywac UPDATE / DELETE musza byc adnotacje transactional i modyfing
 	@Transactional
 	@Modifying
 	@Query(value="UPDATE Equipment "
 			+ "SET available_Amount = available_Amount - 1 "
 			+ "WHERE id = :id "
-			+ "AND available_Amount > 0") 
+			+ "AND available_Amount > 0")
 	public void lendEquipment(Long id);
 
 	@Transactional
@@ -26,5 +26,5 @@ public interface EquipmentRepository extends CrudRepository<Equipment, Long>{
 			+ "WHERE id = :id "
 			+ "AND available_Amount >= 0")
 	public void returnEquipment(Long id);
-	
+
 }

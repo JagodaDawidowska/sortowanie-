@@ -24,16 +24,15 @@ import lombok.ToString;
 
 public class Equipment {
 
-	//id_UserMagazyn klucz obcy (One to Many z Uzer magazyn , joinColumn albo JoinTable
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Enumerated(EnumType.STRING)
-	private EquipmentEnum equipmentItem;
-	
-	private Integer availableAmount;
-	
-	private Integer totalAmount;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private EquipmentEnum equipmentItem;
+
+    private Integer availableAmount;
+
+    private Integer totalAmount;
+
 }

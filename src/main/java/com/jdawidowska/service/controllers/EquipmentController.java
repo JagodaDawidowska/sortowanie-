@@ -10,31 +10,30 @@ import com.jdawidowska.service.services.EquipmentService;
 @RestController("/equipment")
 public class EquipmentController {
 
-	private EquipmentService equipmentService;
+    private EquipmentService equipmentService;
 
-	public EquipmentController(EquipmentService equipmentService) {
-		this.equipmentService = equipmentService;
-	}
+    public EquipmentController(EquipmentService equipmentService) {
+        this.equipmentService = equipmentService;
+    }
 
-	// pokaz
-	@GetMapping("/findAllEquipment")
-	public Iterable<Equipment> findAllEquipment() {
-		return equipmentService.findAllEquipment();
-	}
+    @GetMapping("/findAllEquipment")
+    public Iterable<Equipment> findAllEquipment() {
+        return equipmentService.findAllEquipment();
+    }
 
-	@GetMapping("/lend/{id}")
-	public String lendEquipment(@PathVariable Long id) {
-		if(!equipmentService.lendEquipment(id)) {
-			return "Equipment currently unavailable";
-		}
-		return "Success";
-	}
+    @GetMapping("/lend/{id}")
+    public String lendEquipment(@PathVariable Long id) {
+        if (!equipmentService.lendEquipment(id)) {
+            return "Equipment currently unavailable";
+        }
+        return "Success";
+    }
 
-	@GetMapping("/return/{id}")
-	public String returnEquipment(@PathVariable Long id) {
-		if(equipmentService.returnEquipment(id)){
-			return "Success";
-		}
-		return "Inventory is full";	
-	}
+    @GetMapping("/return/{id}")
+    public String returnEquipment(@PathVariable Long id) {
+        if (equipmentService.returnEquipment(id)) {
+            return "Success";
+        }
+        return "Inventory is full";
+    }
 }
